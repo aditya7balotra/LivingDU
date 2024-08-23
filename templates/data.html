@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collected Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='data.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Collected Data</h1>
+        <a href="/download" class="download-link">Download Data</a>
+    </header>
+    <main>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sno.</th>
+                        <th>College</th>
+                        <th>Area</th>
+                        <th>Room Type</th>
+                        <th>Money Per Month</th>
+                        <th>No. of People Living</th>
+                        <th>Contract Duration</th>
+                        <th>Security Charge</th>
+                        <th>Distance to Transport</th>
+                        <th>Food Type</th>
+                        <th>Facilities</th>
+                        <th>Gender Specific</th>
+                        <th>Distance to College</th>
+                        <th>Overall Rating</th>
+                        <th>Additional comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.college | e }}</td>
+                        <td>{{ item.area | e }}</td>
+                        <td>{{ item.room_type | e }}</td>
+                        <td>{{ item.money_per_month }}</td>
+                        <td>{{ item.living }}</td>
+                        <td>{{ item.contract | e }}</td>
+                        <td>{{ item.security_charge }}</td>
+                        <td>{{ item.transport | e }}</td>
+                        <td>{{ item.food_type | e }}</td>
+                        <td>{{ item.facilities | e }}</td>
+                        <td>{{ item.gender_specific | e }}</td>
+                        <td>{{ item.distance }}</td>
+                        <td>{{ item.rating }}</td>
+                        <td>{{ item.mention | e }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Fetch</p>
+    </footer>
+</body>
+</html>

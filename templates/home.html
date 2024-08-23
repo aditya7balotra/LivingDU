@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Collection Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <script>
+        // JavaScript function to sort options alphabetically
+        function sortSelectOptions(selectElement) {
+            let options = Array.from(selectElement.options);
+            let placeholder = options.shift(); // Remove the first element (placeholder)
+            options.sort((a, b) => a.text.localeCompare(b.text));
+            options.unshift(placeholder); // Add the placeholder back to the beginning
+
+            // Clear all existing options
+            selectElement.innerHTML = '';
+
+            // Add sorted options back to the select element
+            options.forEach(option => selectElement.add(option));
+        }
+
+        // Wait for the DOM to load before sorting
+        document.addEventListener('DOMContentLoaded', function() {
+            let collegeSelect = document.getElementById('college_name');
+            sortSelectOptions(collegeSelect);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div id="text-head">
+            <h2>Welcome!</h2>
+            <p>Welcome to our data collection page. We aim to help incoming students understand the cost of living in various areas.</p>
+            <p>Freshers often wonder about the expenses related to living near their college. By sharing your experience, you can provide valuable insights.</p>
+            <p>Please fill out the form below. We do not ask for personal details, but we request that you provide accurate information.</p>
+            <!-- <ul>
+                Information we need:
+                <li>Your college</li>
+                <li>Area of the room you are providing details about</li>
+                <li>Monthly rent (please provide only your share; include rent, food, travel, and other expenses)</li>
+                <li>Food type (self-cooked or ordered)</li>
+                <li>Any additional comments you wish to make</li>
+            </ul> -->
+        </div>
+    </header>
+    <hr>
+    <div id="form-parent-div">
+        <form method="post" action="/save">
+            <div id="college" class="req">
+                <label for="college_name">Select your college: </label>
+                <select name="college" id="college_name" required>
+                    <option value="" disabled selected hidden>Select your college</option>
+                    <option value="rajdhani college">Rajdhani College</option>
+                    <option value="atma ram sanatan dharma" >Atma Ram Sanatan Dharma</option>
+                    <option value="hindu college">Hindu College</option>
+                    <option value="aryabhatta college">Aryabhatta College</option>
+                    <option value="hansraj college">Hansraj College</option>
+                    <option value="kirori mal college">Kirori Mal College</option>
+                    <option value="shaheed bhagat singh college">Shaheed Bhagat Singh College</option>
+                    <option value="jesus and mary college">Jesus and Mary College</option>
+                    <option value="st stephens college">St. Stephen's College</option>
+                    <option value="ramjas college">Ramjas College</option>
+                    <option value="shivaji college">Shivaji College</option>
+                    <option value="gargi college">Gargi College</option>
+                    <option value="lady shri ram college">Lady Shri Ram College</option>
+                    <option value="moti lal nehru college">Moti Lal Nehru College</option>
+                    <option value="swami shraddhanand college">Swami Shraddhanand College</option>
+                    <option value="maitreyi college">Maitreyi College</option>
+                    <option value="indraprastha college">Indraprastha College for Women</option>
+                    <option value="satyawati college">Satyawati College</option>
+                    <option value="durgabai deshmukh">Durgabai Deshmukh College</option>
+                    <option value="college of art">College of Art</option>
+                    <!-- <option value="north_campus">North Campus</option>
+                    <option value="south_campus">South Campus</option>
+                    <option value="university_of_delhi">University of Delhi</option> -->
+                    <option value="shri guru tegh bahadur">Shri Guru Tegh Bahadur Khalsa College</option>
+                    <option value="shyam lal">Shyam Lal College</option>
+                    <option value="baba saheb ambedkar">Baba Saheb Ambedkar College</option>
+                    <option value="patel chest">Patel Chest College</option>
+                    <option value="bhaskaracharya">Bhaskaracharya College of Applied Sciences</option>
+                    <option value="college of vocational_studies">College of Vocational Studies</option>
+                    <option value="keshav maharaja">Keshav Mahavidyalaya</option>
+                    <!-- <option value="amitasha">Amitasha College</option> -->
+                    <option value="garg college">Garg College</option>
+                    <!-- <option value="aditya group">Aditya Group of Colleges</option> -->
+                    <option value="rishi patel">Rishi Patel College</option>
+                </select>
+                <p>If your college is not listed, <a href="https://chat.whatsapp.com/G03AkRpMq001uMWgr0yIer" target="_blank">message us here</a>.</p>
+            </div>
+            <div id="area" class="req">
+                <label for="area_name">Room area: </label>
+                <input name="area" type="text" placeholder="e.g., Area Name" id="area_name" required>
+            </div>
+            <div class="req">
+                <label for="room_type">Room type: </label>
+                <input name="room_type" id="room_type" type="text" placeholder="e.g., 2BHK, 3-shared PG, 2-shared flat" required>
+            </div>
+            <div id="money" class="req">
+                <label for="per_money">Monthly rent (your share only): </label>
+                <input min="0" name="money" type="number" placeholder="Amount" id="per_money" required>
+            </div>
+            <div class="req">
+                <label for="living">Number of people living in the room: </label>
+                <input name="living" id="living" type="number" min="1" placeholder="e.g., 2" required>
+            </div>
+            
+            <div class="req">
+                <label for="contract">Contract duration (if applicable): </label>
+                <input name="contract" id="contract" type="text" placeholder="e.g., 1 year, none" required>
+            </div>
+
+            <div class="req">
+                <label for="security_charge">Security charge: </label>
+                <input name="security_charge" id="security_charge" type="number" min="0" placeholder="Amount" required>
+            </div>
+
+            <div class="req">
+                <label for="transport">Distance from the nearest transport facility: </label>
+                <input name="transport" id="transport" type="text" placeholder="e.g., 1 km" required>
+            </div>
+
+            <div id="food" class="req">
+                <label for="food_type">Food type: </label>
+                <select name="food" id="food_type" required>
+                    <option value="" disabled selected hidden>Select food type</option>
+                    <option value="myself">I cook my own food</option>
+                    <option value="order">I order food or use PG food</option>
+                </select>
+            </div>
+
+            <div class="req">
+                <label for="facilities">Facilities included with the room: </label>
+                <input name="facilities" id="facilities" type="text" placeholder="e.g., WiFi, washing machine, AC" required>
+            </div>
+
+            <div class="req">
+                <label for="gender">Gender specific: </label>
+                <input type="radio" id="male" name="gender_specific" value="male">
+                <label style="display: inline;" for="male">Male</label><br>
+                <input type="radio" id="female" name="gender_specific" value="female">
+                <label style="display: inline;" for="female">Female</label><br>
+                <input type="radio" id="coed" name="gender_specific" value="coed">
+                <label style="display: inline;" for="coed">Co-ed</label>
+            </div>
+            
+            <div class="req">
+                <label for="distance">Approximate distance from the college: </label>
+                <input name="distance" id="distance" type="text" placeholder="eg: 1km , 800m" required>
+            </div>
+
+            <div class="req">
+                <label for="rating">Overall rating: </label>
+                <input name="rating" id="rating" type='number' min="0"  max="5" placeholder="Rate out of 5" step="0.1" required>
+            </div>
+
+            <div id="mention" class="req">
+                <label for="mention">Additional comments: </label>
+                <textarea name="mention" placeholder="Share any additional details or expenses breakdown" maxlength="500" id="mention" rows="10" cols="20"></textarea>
+            </div>
+
+            <div class="req">
+                <input id="consent" name="consent" type="checkbox" required>
+                <label for="consent" style="display: inline;">
+                    I consent to this data being publicly available
+                </label>
+            </div>
+            <button type="submit" id="submit">Submit</button>
+            <!-- <button type="reset">Reset</button> -->
+        </form>
+    </div>
+    <footer>
+        <!-- Footer content -->
+        <p>&copy; 2024 Fetch</p>
+    </footer>
+</body>
+</html>

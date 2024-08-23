@@ -1,0 +1,100 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.download-link {
+    color: #fff;
+    text-decoration: none;
+    background-color: #0056b3;
+    padding: 10px 15px;
+    border-radius: 5px;
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    animation-name: jump;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+}
+
+.download-link:hover {
+    background-color: #004494;
+}
+
+@keyframes jump{
+    20% {
+        transform: translate(0px, -20px);
+        background-color: blue;
+    }
+    50%{
+        transform: translate(0px , 10px);
+    }
+    100%{
+        transform: translate(0px , 0px);
+        background-color: #0056b3;
+    }
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table container for horizontal scrolling */
+.table-container {
+    overflow-x: auto;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table thead {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Footer styling */
+footer {
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    /* position: fixed; */
+    width: 100%;
+    bottom: 0;
+}

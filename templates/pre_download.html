@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pre_download.css') }}">
+    <script>
+        // JavaScript function to sort options alphabetically
+        function sortSelectOptions(selectElement) {
+            let options = Array.from(selectElement.options);
+            let placeholder = options.shift(); // Remove the first element (placeholder)
+            options.sort((a, b) => a.text.localeCompare(b.text));
+            options.unshift(placeholder); // Add the placeholder back to the beginning
+
+            // Clear all existing options
+            selectElement.innerHTML = '';
+
+            // Add sorted options back to the select element
+            options.forEach(option => selectElement.add(option));
+        }
+
+        // Wait for the DOM to load before sorting
+        document.addEventListener('DOMContentLoaded', function() {
+            let collegeSelect = document.getElementById('college');
+            sortSelectOptions(collegeSelect);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>User Information</h1>
+    </header>
+    <main>
+        <form action="/download" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="college">College:</label>
+                <select name="college" id="college" required>
+                    <option value="" disabled selected hidden>Select your college</option>
+                    <option value="rajdhani college">Rajdhani College</option>
+                    <option value="atma ram sanatan dharma" >Atma Ram Sanatan Dharma</option>
+                    <option value="hindu college">Hindu College</option>
+                    <option value="aryabhatta college">Aryabhatta College</option>
+                    <option value="hansraj college">Hansraj College</option>
+                    <option value="kirori mal college">Kirori Mal College</option>
+                    <option value="shaheed bhagat singh college">Shaheed Bhagat Singh College</option>
+                    <option value="jesus and mary college">Jesus and Mary College</option>
+                    <option value="st stephens college">St. Stephen's College</option>
+                    <option value="ramjas college">Ramjas College</option>
+                    <option value="shivaji college">Shivaji College</option>
+                    <option value="gargi college">Gargi College</option>
+                    <option value="lady shri ram college">Lady Shri Ram College</option>
+                    <option value="moti lal nehru college">Moti Lal Nehru College</option>
+                    <option value="swami shraddhanand college">Swami Shraddhanand College</option>
+                    <option value="maitreyi college">Maitreyi College</option>
+                    <option value="indraprastha college">Indraprastha College for Women</option>
+                    <option value="satyawati college">Satyawati College</option>
+                    <option value="durgabai deshmukh">Durgabai Deshmukh College</option>
+                    <option value="college of art">College of Art</option>
+                    <!-- <option value="north_campus">North Campus</option>
+                    <option value="south_campus">South Campus</option>
+                    <option value="university_of_delhi">University of Delhi</option> -->
+                    <option value="shri guru tegh bahadur">Shri Guru Tegh Bahadur Khalsa College</option>
+                    <option value="shyam lal">Shyam Lal College</option>
+                    <option value="baba saheb ambedkar">Baba Saheb Ambedkar College</option>
+                    <option value="patel chest">Patel Chest College</option>
+                    <option value="bhaskaracharya">Bhaskaracharya College of Applied Sciences</option>
+                    <option value="college of vocational_studies">College of Vocational Studies</option>
+                    <option value="keshav maharaja">Keshav Mahavidyalaya</option>
+                    <!-- <option value="amitasha">Amitasha College</option> -->
+                    <option value="garg college">Garg College</option>
+                    <!-- <option value="aditya group">Aditya Group of Colleges</option> -->
+                    <option value="rishi patel">Rishi Patel College</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+
+            <div class="form-group">
+                <p>Wanna connect? Join <a href="https://chat.whatsapp.com/G03AkRpMq001uMWgr0yIer" target="_blank">Whatsapp group</a></p>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your Website</p>
+    </footer>
+</body>
+</html>
