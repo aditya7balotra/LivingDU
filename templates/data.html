@@ -29,6 +29,7 @@
                         <th>Facilities</th>
                         <th>Gender Specific</th>
                         <th>Distance to College</th>
+                        <th>Contact</th>
                         <th>Overall Rating</th>
                         <th>Additional comment</th>
                     </tr>
@@ -37,7 +38,7 @@
                     {% for item in data %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ item.college | e }}</td>
+                        <td>{{ item.college | e | capitalize }}</td>
                         <td>{{ item.area | e }}</td>
                         <td>{{ item.room_type | e }}</td>
                         <td>{{ item.money_per_month }}</td>
@@ -49,6 +50,7 @@
                         <td>{{ item.facilities | e }}</td>
                         <td>{{ item.gender_specific | e }}</td>
                         <td>{{ item.distance }}</td>
+                        <td>{{ item.contact }}</td>
                         <td>{{ item.rating }}</td>
                         <td>{{ item.mention | e }}</td>
                     </tr>

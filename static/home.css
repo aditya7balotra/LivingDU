@@ -112,3 +112,10 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+/* Hide spinners in Webkit browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
