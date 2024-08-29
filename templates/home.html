@@ -25,6 +25,18 @@
             let collegeSelect = document.getElementById('college_name');
             sortSelectOptions(collegeSelect);
         });
+
+        function validateLength(input) {
+            const value = input.value;
+            if (value.length > 10) {
+                input.value = value.slice(0, 10); // Trim the value to 10 digits
+            }
+        }
+
+        function validateNumberInput(event) {
+            const input = event.target;
+            input.value = input.value.replace(/[^0-9.]/g, ''); // Allow only numbers and decimal points
+        }
     </script>
 </head>
 <body>
@@ -34,14 +46,6 @@
             <p>Welcome to our data collection page. We aim to help incoming students understand the cost of living in various areas.</p>
             <p>Freshers often wonder about the expenses related to living near their college. By sharing your experience, you can provide valuable insights.</p>
             <p>Please fill out the form below. We do not ask for personal details, but we request that you provide accurate information.</p>
-            <!-- <ul>
-                Information we need:
-                <li>Your college</li>
-                <li>Area of the room you are providing details about</li>
-                <li>Monthly rent (please provide only your share; include rent, food, travel, and other expenses)</li>
-                <li>Food type (self-cooked or ordered)</li>
-                <li>Any additional comments you wish to make</li>
-            </ul> -->
         </div>
     </header>
     <hr>
@@ -52,7 +56,7 @@
                 <select name="college" id="college_name" required>
                     <option value="" disabled selected hidden>Select your college</option>
                     <option value="rajdhani college">Rajdhani College</option>
-                    <option value="atma ram sanatan dharma" >Atma Ram Sanatan Dharma</option>
+                    <option value="atma ram sanatan dharma">Atma Ram Sanatan Dharma</option>
                     <option value="hindu college">Hindu College</option>
                     <option value="aryabhatta college">Aryabhatta College</option>
                     <option value="hansraj college">Hansraj College</option>
@@ -71,9 +75,6 @@
                     <option value="satyawati college">Satyawati College</option>
                     <option value="durgabai deshmukh">Durgabai Deshmukh College</option>
                     <option value="college of art">College of Art</option>
-                    <!-- <option value="north_campus">North Campus</option>
-                    <option value="south_campus">South Campus</option>
-                    <option value="university_of_delhi">University of Delhi</option> -->
                     <option value="shri guru tegh bahadur">Shri Guru Tegh Bahadur Khalsa College</option>
                     <option value="shyam lal">Shyam Lal College</option>
                     <option value="baba saheb ambedkar">Baba Saheb Ambedkar College</option>
@@ -81,9 +82,7 @@
                     <option value="bhaskaracharya">Bhaskaracharya College of Applied Sciences</option>
                     <option value="college of vocational_studies">College of Vocational Studies</option>
                     <option value="keshav maharaja">Keshav Mahavidyalaya</option>
-                    <!-- <option value="amitasha">Amitasha College</option> -->
                     <option value="garg college">Garg College</option>
-                    <!-- <option value="aditya group">Aditya Group of Colleges</option> -->
                     <option value="rishi patel">Rishi Patel College</option>
                 </select>
                 <p>If your college is not listed, <a href="https://chat.whatsapp.com/G03AkRpMq001uMWgr0yIer" target="_blank">message us here</a>.</p>
@@ -98,11 +97,11 @@
             </div>
             <div id="money" class="req">
                 <label for="per_money">Monthly rent (your share only): </label>
-                <input min="0" name="money" type="number" placeholder="Amount" id="per_money" required>
+                <input name="money" type="text" placeholder="Amount" id="per_money" required oninput="validateNumberInput(event)">
             </div>
             <div class="req">
                 <label for="living">Number of people living in the room: </label>
-                <input name="living" id="living" type="number" min="1" placeholder="e.g., 2" required>
+                <input name="living" id="living" type="text" placeholder="e.g., 2" required oninput="validateNumberInput(event)">
             </div>
             
             <div class="req">
@@ -112,7 +111,7 @@
 
             <div class="req">
                 <label for="security_charge">Security charge: </label>
-                <input name="security_charge" id="security_charge" type="number" min="0" placeholder="Amount" required>
+                <input name="security_charge" id="security_charge" type="text" placeholder="Amount" required oninput="validateNumberInput(event)">
             </div>
 
             <div class="req">
@@ -146,32 +145,39 @@
             
             <div class="req">
                 <label for="distance">Approximate distance from the college: </label>
-                <input name="distance" id="distance" type="text" placeholder="eg: 1km , 800m" required>
+                <input name="distance" id="distance" type="text" placeholder="e.g., 1km, 800m" required>
             </div>
 
             <div class="req">
                 <label for="rating">Overall rating: </label>
-                <input name="rating" id="rating" type='number' min="0"  max="5" placeholder="Rate out of 5" step="0.1" required>
+                <input name="rating" id="rating" type="number" min="0" max="5" placeholder="Rate out of 5" step="0.1" required>
             </div>
-
-            <div id="mention" class="req">
-                <label for="mention">Additional comments: </label>
-                <textarea name="mention" placeholder="Share any additional details or expenses breakdown" maxlength="500" id="mention" rows="10" cols="20"></textarea>
-            </div>
-
+            
             <div class="req">
-                <input id="consent" name="consent" type="checkbox" required>
-                <label for="consent" style="display: inline;">
-                    I consent to this data being publicly available
-                </label>
-            </div>
-            <button type="submit" id="submit">Submit</button>
-            <!-- <button type="reset">Reset</button> -->
-        </form>
-    </div>
-    <footer>
-        <!-- Footer content -->
-        <p>&copy; 2024 Fetch</p>
-    </footer>
-</body>
-</html>
+                <label for="num">
+                    <label for="num">Contact number: </label>
+                    <input type="text" name="num" placeholder="Contact number (optional)" id="num" oninput="validateLength(this)">
+                </div>
+    
+                <div id="mention" class="req">
+                    <label for="mention">Additional comments: </label>
+                    <textarea name="mention" placeholder="Share any additional details or expenses breakdown" maxlength="500" id="mention" rows="10" cols="20"></textarea>
+                </div>
+    
+                <div class="req">
+                    <input id="consent" name="consent" type="checkbox" required>
+                    <label for="consent" style="display: inline;">
+                        I consent to this data being publicly available
+                    </label>
+                </div>
+                <button type="submit" id="submit">Submit</button>
+                <!-- <button type="reset">Reset</button> -->
+            </form>
+        </div>
+        <footer>
+            <!-- Footer content -->
+            <p>&copy; 2024 Fetch</p>
+        </footer>
+    </body>
+    </html>
+    

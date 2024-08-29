@@ -58,6 +58,7 @@ def save():
         rating = request.form.get('rating')
         mention = request.form.get('mention')
         consent = request.form.get('consent')
+        number = request.form.get('num')
 
     # Process the form data as needed
 
@@ -76,7 +77,8 @@ def save():
             'gender_specific': gender_specific,
             'distance': distance,
             'rating': rating,
-            'mention': mention
+            'mention': mention,
+            'contact' : number
         }
 
         
@@ -177,6 +179,7 @@ def edit_home():
     rating = request.form.get('rating')
     mention = request.form.get('mention')
     consent = request.form.get('consent')
+    number = request.form.get('num')
 
     # Process the form data as needed
 
@@ -195,7 +198,8 @@ def edit_home():
         'gender_specific': gender_specific,
         'distance': distance,
         'rating': rating,
-        'mention': mention
+        'mention': mention,
+        'contact': number
     }
     
     #updating the previous data

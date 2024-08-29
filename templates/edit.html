@@ -25,6 +25,37 @@
             let collegeSelect = document.getElementById('college_name');
             sortSelectOptions(collegeSelect);
         });
+
+        function validateLength(input) {
+            const value = input.value;
+            if (value.length > 10) {
+                input.value = value.slice(0, 10); // Trim the value to 10 digits
+            }
+        }
+
+        function validateNumberInput(event) {
+            // Allow only numbers
+            if (isNaN(event.target.value)) {
+                event.target.value = '';
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let collegeSelect = document.getElementById('college_name');
+            let options = Array.from(collegeSelect.options);
+            let values = new Set();
+
+            options.forEach(option => {
+                if (values.has(option.value)) {
+                    collegeSelect.remove(option.index);
+                } else {
+                    values.add(option.value);
+                }
+            });
+        });
+
+
     </script>
 </head>
 <body>
@@ -44,9 +75,10 @@
                 <select name="college" id="college_name" required>
                     <!-- <option value="" disabled hidden>Select your college</option> -->
                     <!-- <option value="" disabled selected hidden>Select your college</option> -->
-                    <option value="{{ data['college']}}">{{data['college']}}</option>
+                    
+                    <option value="{{ data['college']}}">{{data['college'] | capitalize}}</option>
                     <option value="rajdhani college">Rajdhani College</option>
-                    <option value="atma ram sanatan dharma" >Atma Ram Sanatan Dharma</option>
+                    <option value="atma ram sanatan dharma">Atma Ram Sanatan Dharma</option>
                     <option value="hindu college">Hindu College</option>
                     <option value="aryabhatta college">Aryabhatta College</option>
                     <option value="hansraj college">Hansraj College</option>
@@ -92,11 +124,11 @@
             </div>
             <div id="money" class="req">
                 <label for="per_money">Monthly rent (your share only): </label>
-                <input min="0" name="money" type="number" placeholder="Amount" id="per_money" value="{{ data['money_per_month'] if data else '' }}" required>
+                <input name="money" type="text" placeholder="Amount" id="per_money" value="{{ data['money_per_month'] if data else '' }}" required oninput="validateNumberInput(event)">
             </div>
             <div class="req">
                 <label for="living">Number of people living in the room: </label>
-                <input name="living" id="living" type="number" min="1" placeholder="e.g., 2" value="{{ data['living'] if data else '' }}" required>
+                <input name="living" id="living" type="text" placeholder="e.g., 2" value="{{ data['living'] if data else '' }}" required oninput="validateNumberInput(event)">
             </div>
             <div class="req">
                 <label for="contract">Contract duration (if applicable): </label>
@@ -104,7 +136,7 @@
             </div>
             <div class="req">
                 <label for="security_charge">Security charge: </label>
-                <input name="security_charge" id="security_charge" type="number" min="0" placeholder="Amount" value="{{ data['security_charge'] if data else '' }}" required>
+                <input name="security_charge" id="security_charge" type="text" placeholder="Amount" value="{{ data['security_charge'] if data else '' }}" required oninput="validateNumberInput(event)">
             </div>
             <div class="req">
                 <label for="transport">Distance from the nearest transport facility: </label>
@@ -124,6 +156,7 @@
             </div>
             <div class="req">
                 <label for="gender">Gender specific: </label>
+                <input type="radio" id="male" name="gender_specific
                 <input type="radio" id="male" name="gender_specific" value="male" {% if data and data['gender_specific'] == 'male' %}checked{% endif %}>
                 <label style="display: inline;" for="male">Male</label><br>
                 <input type="radio" id="female" name="gender_specific" value="female" {% if data and data['gender_specific'] == 'female' %}checked{% endif %}>
@@ -137,8 +170,14 @@
             </div>
             <div class="req">
                 <label for="rating">Overall rating: </label>
-                <input name="rating" id="rating" type='number' min="0" max="5" step="0.1" placeholder="Rate out of 5" value="{{ data['rating'] if data else '' }}" required>
+                <input name="rating" id="rating" type="text" placeholder="Rate out of 5" value="{{ data['rating'] if data else '' }}" required oninput="validateNumberInput(event)">
             </div>
+
+            <div class="req">
+                <label for="num">Contact number: </label>
+                <input type="text" name="num" placeholder="Contact number (optional)" id="num" oninput="validateLength(this); validateNumberInput(event)" value="{{data['contact'] if data}}">
+            </div>
+
             <div id="mention" class="req">
                 <label for="mention">Additional comments: </label>
                 <textarea name="mention" placeholder="Share any additional details or expenses breakdown" maxlength="500" id="mention" rows="10" cols="20">{{ data['mention'] if data else '' }}</textarea>
