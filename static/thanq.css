@@ -1,62 +1,77 @@
+/* General body styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #f0f4f8;
+    color: #2c3e50;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+/* Thank-you container */
 #thank-you-container {
     text-align: center;
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     max-width: 500px;
 }
 
+/* Main heading */
 h1 {
-    color: #4CAF50;
+    color: #2e7d32;
     margin-bottom: 20px;
+    font-size: 2em;
 }
 
+/* Paragraphs */
 p {
     font-size: 1.1em;
     margin: 10px 0;
+    color: #2c3e50;
 }
 
+/* WhatsApp link */
+#whatsapp {
+    color: #2e7d32;
+    font-weight: bold;
+    animation: jump 1s infinite alternate;
+}
+
+/* Standard link */
 a {
-    color: #4CAF50;
+    color: #2e7d32;
     text-decoration: none;
 }
 
+/* Button-style link */
 a.button {
     display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
+    margin-top: 25px;
+    padding: 12px 24px;
+    background-color: #2e7d32;
     color: white;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 a.button:hover {
-    background-color: #45a049;
+    background-color: #1b5e20;
+    transform: scale(1.03);
 }
 
-#whatsapp {
-    color: #4CAF50;
-}
-
-@keyframes jump{
+/* Animation */
+@keyframes jump {
     0% {
-        color: #45a049;
+        color: #2e7d32;
     }
-    100%{
-        color: rgb(7, 107, 19);
+    100% {
+        color: #1b5e20;
     }
 }

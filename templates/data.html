@@ -3,34 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collected Data</title>
+    <title>Accommodation Data for DU Students</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='data.css') }}">
 </head>
 <body>
     <header>
-        <h1>Collected Data</h1>
-        <a href="/download" class="download-link">Download Data</a>
+        
+        <h1>Real Accommodation Data from DU Students</h1>
+        <p style="text-align: center; max-width: 800px; margin: 15px auto 25px; font-size: 1.15em; color: #f1f1f1;">
+    These insights are shared by DU students about their current accommodation — rent, room types, nearby transport, and more. Explore the data below to make smarter, stress-free housing decisions!
+</p>
+
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="/download" class="download-link" style="font-size: 1em;">⬇️ Download Complete Data</a>
+        </div>
     </header>
+
     <main>
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th>Sno.</th>
+                        <th>S. No.</th>
                         <th>College</th>
                         <th>Area</th>
                         <th>Room Type</th>
-                        <th>Money Per Month</th>
-                        <th>No. of People Living</th>
-                        <th>Contract Duration</th>
-                        <th>Security Charge</th>
-                        <th>Distance to Transport</th>
-                        <th>Food Type</th>
+                        <th>Monthly Rent<br>(Your Share)</th>
+                        <th>People Sharing</th>
+                        <th>Contract</th>
+                        <th>Security<br>Deposit</th>
+                        <th>Nearest<br>Transport</th>
+                        <th>Food</th>
                         <th>Facilities</th>
-                        <th>Gender Specific</th>
-                        <th>Distance to College</th>
-                        <th>Overall Rating</th>
-                        <th>Additional comment</th>
+                        <th>Gender</th>
+                        <th>Distance<br>to College</th>
+                        <th>Rating<br>/5</th>
+                        <th>Comments</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,8 +66,9 @@
             </table>
         </div>
     </main>
+
     <footer>
-        <p>&copy; 2024 Fetch</p>
+        <p>&copy; 2025 Fetch — Powered by real student experiences to help you settle smarter.</p>
     </footer>
 </body>
 </html>

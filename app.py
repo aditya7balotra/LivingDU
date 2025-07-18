@@ -133,9 +133,26 @@ def download():
             data = json.load(file)
         # preparing the asked data
         df = pd.DataFrame(data)
+        # print(df)
         df.college = df.college.apply(lambda x : x.lower())
         df = df[df['college'] == college]
-        
+        df.rename(columns={
+            'college': 'College',
+            'area': 'Area / Locality',
+            'room_type': 'Room Type',
+            'money_per_month': 'Monthly Rent (Per Person Share)',
+            'living': 'People Sharing the Room',
+            'contract': 'Contract Duration',
+            'security_charge': 'Security Deposit',
+            'transport': 'Nearest Transport (Distance)',
+            'food_type': 'Food Means',
+            'facilities': 'Facilities Included',
+            'gender_specific': 'Room Allowed For',
+            'distance': 'Distance to College',
+            'rating': 'Overall Rating (Out of 5)',
+            'mention': 'Additional Comments'
+        }, inplace=True)
+
         buffer = BytesIO()
         df.to_excel(buffer , index=False)
         buffer.seek(0)
@@ -213,6 +230,6 @@ def edit_home():
     
 if __name__ == '__main__':
     app.run(
-        debug= True
+        debug= False
     )
     

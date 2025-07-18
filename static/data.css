@@ -1,60 +1,67 @@
 /* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #eef4f8;
+    color: #263238;
     margin: 0;
     padding: 0;
 }
 
 /* Header styling */
 header {
-    background-color: #007BFF;
+    background: linear-gradient(to right, #3f51b5, #1a237e);
     color: #fff;
-    padding: 20px;
+    padding: 30px 20px;
     text-align: center;
     position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
 }
 
 .download-link {
     color: #fff;
     text-decoration: none;
-    background-color: #0056b3;
+    background-color: #43a047;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 6px;
     position: absolute;
     right: 20px;
     top: 40px;
     animation-name: jump;
     animation-iteration-count: infinite;
     animation-duration: 3s;
+    transition: background-color 0.3s ease;
 }
 
 .download-link:hover {
-    background-color: #004494;
+    background-color: #388e3c;
 }
 
-@keyframes jump{
+@keyframes jump {
     20% {
         transform: translate(0px, -20px);
-        background-color: blue;
+        background-color: #2e7d32;
     }
-    50%{
-        transform: translate(0px , 10px);
+    50% {
+        transform: translate(0px, 10px);
     }
-    100%{
-        transform: translate(0px , 0px);
-        background-color: #0056b3;
+    100% {
+        transform: translate(0px, 0px);
+        background-color: #43a047;
     }
 }
 
 /* Main content styling */
 main {
-    padding: 20px;
-    max-width: 1000px;
-    margin: 20px auto;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 1100px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
 }
 
 /* Table container for horizontal scrolling */
@@ -67,34 +74,36 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    font-size: 0.97em;
 }
 
 table th, table td {
-    padding: 12px;
+    padding: 12px 16px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ccc;
 }
 
 table thead {
-    background-color: #007BFF;
-    color: #fff;
+    background-color: #3949ab;
+    color: #ffffff;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f5f8fc;
 }
 
 table tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: #e3f2fd;
 }
+
 
 /* Footer styling */
 footer {
-    background-color: transparent;
-    color: black;
+    background-color: #e8edf3;
+    color: #263238;
     text-align: center;
-    padding: 10px;
-    /* position: fixed; */
-    width: 100%;
-    bottom: 0;
+    padding: 15px;
+    font-size: 0.95em;
+    margin-top: 40px;
+    border-top: 1px solid #cfd8dc;
 }

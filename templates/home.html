@@ -31,18 +31,13 @@
     <header>
         <div id="text-head">
             <h2>Welcome!</h2>
-            <p>Welcome to our data collection page. We aim to help incoming students understand the cost of living in various areas.</p>
-            <p>Freshers often wonder about the expenses related to living near their college. By sharing your experience, you can provide valuable insights.</p>
-            <p>Please fill out the form below. We do not ask for personal details, but we request that you provide accurate information.</p>
-            <!-- <ul>
-                Information we need:
-                <li>Your college</li>
-                <li>Area of the room you are providing details about</li>
-                <li>Monthly rent (please provide only your share; include rent, food, travel, and other expenses)</li>
-                <li>Food type (self-cooked or ordered)</li>
-                <li>Any additional comments you wish to make</li>
-            </ul> -->
+            <p>This form helps new DU students understand real living costs near different colleges.</p>
+            <p>If you're currently staying in a PG, flat, or hostel, share your experience — no personal info needed.</p>
+            <p>Just tell us your college, area, rent, facilities, and any tips you have. Your input can really help others!</p>
         </div>
+
+
+
     </header>
     <hr>
     <div id="form-parent-div">
@@ -88,90 +83,99 @@
                 </select>
                 <p>If your college is not listed, <a href="https://chat.whatsapp.com/G03AkRpMq001uMWgr0yIer" target="_blank">message us here</a>.</p>
             </div>
+            
+
             <div id="area" class="req">
-                <label for="area_name">Room area: </label>
-                <input name="area" type="text" placeholder="e.g., Area Name" id="area_name" required>
+                <label for="area_name">Which area is your accommodation in?</label>
+                <input name="area" type="text" placeholder="e.g., Satya Niketan, Kamla Nagar" id="area_name" required>
             </div>
+
             <div class="req">
-                <label for="room_type">Room type: </label>
-                <input name="room_type" id="room_type" type="text" placeholder="e.g., 2BHK, 3-shared PG, 2-shared flat" required>
+                <label for="room_type">What type of room is it?</label>
+                <input name="room_type" id="room_type" type="text" placeholder="e.g., 2BHK flat, 3-sharing PG, 1RK" required>
             </div>
+
             <div id="money" class="req">
-                <label for="per_money">Monthly rent (your share only): </label>
-                <input min="0" name="money" type="number" placeholder="Amount" id="per_money" required>
+                <label for="per_money">Monthly rent (your share only)</label>
+                <input min="0" name="money" type="number" placeholder="e.g., 7000 (rent + food + travel)" id="per_money" required>
             </div>
+
             <div class="req">
-                <label for="living">Number of people living in the room: </label>
+                <label for="living">How many people live in the room?</label>
                 <input name="living" id="living" type="number" min="1" placeholder="e.g., 2" required>
             </div>
-            
+
             <div class="req">
-                <label for="contract">Contract duration (if applicable): </label>
-                <input name="contract" id="contract" type="text" placeholder="e.g., 1 year, none" required>
+                <label for="contract">Rental contract duration</label>
+                <input name="contract" id="contract" type="text" placeholder="e.g., 11 months, None" required>
             </div>
 
             <div class="req">
-                <label for="security_charge">Security charge: </label>
-                <input name="security_charge" id="security_charge" type="number" min="0" placeholder="Amount" required>
+                <label for="security_charge">Security deposit amount</label>
+                <input name="security_charge" id="security_charge" type="number" min="0" placeholder="e.g., 5000" required>
             </div>
 
             <div class="req">
-                <label for="transport">Distance from the nearest transport facility: </label>
-                <input name="transport" id="transport" type="text" placeholder="e.g., 1 km" required>
+                <label for="transport">Distance to nearest metro/bus stop</label>
+                <input name="transport" id="transport" type="text" placeholder="e.g., 1.2 km, 500 m" required>
             </div>
 
             <div id="food" class="req">
-                <label for="food_type">Food type: </label>
+                <label for="food_type">How do you manage food?</label>
                 <select name="food" id="food_type" required>
-                    <option value="" disabled selected hidden>Select food type</option>
+                    <option value="" disabled selected hidden>Select an option</option>
                     <option value="myself">I cook my own food</option>
-                    <option value="order">I order food or use PG food</option>
+                    <option value="order">I order food or eat PG-provided food</option>
                 </select>
             </div>
 
             <div class="req">
-                <label for="facilities">Facilities included with the room: </label>
+                <label for="facilities">Facilities available in your room</label>
                 <input name="facilities" id="facilities" type="text" placeholder="e.g., WiFi, washing machine, AC" required>
             </div>
 
             <div class="req">
-                <label for="gender">Gender specific: </label>
+                <label>Is the accommodation gender-specific?</label>
                 <input type="radio" id="male" name="gender_specific" value="male">
-                <label style="display: inline;" for="male">Male</label><br>
+                <label for="male" style="display: inline;">Male only</label><br>
                 <input type="radio" id="female" name="gender_specific" value="female">
-                <label style="display: inline;" for="female">Female</label><br>
+                <label for="female" style="display: inline;">Female only</label><br>
                 <input type="radio" id="coed" name="gender_specific" value="coed">
-                <label style="display: inline;" for="coed">Co-ed</label>
-            </div>
-            
-            <div class="req">
-                <label for="distance">Approximate distance from the college: </label>
-                <input name="distance" id="distance" type="text" placeholder="eg: 1km , 800m" required>
+                <label for="coed" style="display: inline;">Co-ed (open to all)</label>
             </div>
 
             <div class="req">
-                <label for="rating">Overall rating: </label>
-                <input name="rating" id="rating" type='number' min="0"  max="5" placeholder="Rate out of 5" step="0.1" required>
+                <label for="distance">Distance from your college</label>
+                <input name="distance" id="distance" type="text" placeholder="e.g., 1 km, 800 m" required>
+            </div>
+
+            <div class="req">
+                <label for="rating">How would you rate your stay? (out of 5)</label>
+                <input name="rating" id="rating" type="number" min="0" max="5" step="0.1" placeholder="e.g., 4.5" required>
             </div>
 
             <div id="mention" class="req">
-                <label for="mention">Additional comments: </label>
-                <textarea name="mention" placeholder="Share any additional details or expenses breakdown" maxlength="500" id="mention" rows="10" cols="20"></textarea>
+                <label for="mention">Any extra comments or tips?</label>
+                <textarea name="mention" placeholder="Mention noise levels, safety, nearby markets, or any hidden costs..." maxlength="500" id="mention" rows="8" cols="30"></textarea>
             </div>
 
             <div class="req">
                 <input id="consent" name="consent" type="checkbox" required>
                 <label for="consent" style="display: inline;">
-                    I consent to this data being publicly available
+                    I agree that this information can be shared publicly to help other students.
                 </label>
             </div>
+
+
+
+
             <button type="submit" id="submit">Submit</button>
             <!-- <button type="reset">Reset</button> -->
         </form>
     </div>
     <footer>
         <!-- Footer content -->
-        <p>&copy; 2024 Fetch</p>
+        <p>&copy; 2025 Fetch</p>
     </footer>
 </body>
 </html>
