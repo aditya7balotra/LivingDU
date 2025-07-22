@@ -134,9 +134,11 @@ def download():
         # preparing the asked data
         df = pd.DataFrame(data)
         # print(df)
-        df.college = df.college.apply(lambda x : x.lower())
-        df = df[df['college'] == college]
-        df.rename(columns={
+        # print(df)
+        try:
+            df.college = df.college.apply(lambda x : x.lower())
+            df = df[df['college'] == college]
+            df.rename(columns={
             'college': 'College',
             'area': 'Area / Locality',
             'room_type': 'Room Type',
@@ -152,6 +154,9 @@ def download():
             'rating': 'Overall Rating (Out of 5)',
             'mention': 'Additional Comments'
         }, inplace=True)
+        except:
+            pass
+        
 
         buffer = BytesIO()
         df.to_excel(buffer , index=False)
