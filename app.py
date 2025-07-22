@@ -1,5 +1,6 @@
 from flask import Flask , render_template , url_for , make_response , request , redirect , send_file
 import json
+import fcntl
 from io import BytesIO
 import pandas as pd
 
@@ -89,8 +90,11 @@ def save():
         #updating the data
         data.append(new_data)
         
-        with open('data.json' , 'w') as file:
-            data = json.dump(data , file , indent= 4)
+        with open('data.json', 'w') as file:
+            fcntl.flock(file, fcntl.LOCK_EX)
+            json.dump(data, file, indent=4)
+            fcntl.flock(file, fcntl.LOCK_UN)
+
             
         response = make_response(render_template('thanq.html'))
         response.set_cookie('entered' , str(data_len) , 600)
@@ -125,8 +129,11 @@ def download():
         data['college'].append(college)
         data['state'].append(area)
         
-        with open('downloads.json' , 'w') as file:
-            json.dump(data , file , indent= 4)
+        with open('downloads.json', 'w') as file:
+            fcntl.flock(file, fcntl.LOCK_EX)
+            json.dump(data, file, indent=4)
+            fcntl.flock(file, fcntl.LOCK_UN)
+
         
         #loading the asked data
         with open('data.json') as file:
@@ -226,8 +233,11 @@ def edit_home():
     
     data[row_num] = new_data
     
-    with open('data.json' , 'w') as file:
-        json.dump(data , file , indent = 4)
+    with open('data.json', 'w') as file:
+        fcntl.flock(file, fcntl.LOCK_EX)
+        json.dump(data, file, indent=4)
+        fcntl.flock(file, fcntl.LOCK_UN)
+
         
     return redirect(url_for('index'))
         
